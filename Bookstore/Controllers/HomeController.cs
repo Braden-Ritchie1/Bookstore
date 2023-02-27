@@ -1,4 +1,5 @@
 ﻿using Bookstore.Models;
+using Bookstore.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,24 @@ namespace Bookstore.Controllers
         {
             int numResults = 10;
 
-            //this lists out the books, ordered by title and prints out 10 per page
-            var list = repo.Books
+            var x = new BooksViewModel
+            {
+                //this lists out the books, ordered by title and prints out 10 per page
+                Books = repo.Books
                 .OrderBy(b => b.Title)
                 .Skip((pageNum - 1) * numResults)
-                .Take(numResults);
+                .Take(numResults),
 
-            return View(list);
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks = repo.Books.Count(),
+                    BooksPerPage = numResults,
+                    CurrentPage = pageNum
+                }
+
+            };
+
+            return View(x);
         }
     }
 }
