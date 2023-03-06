@@ -3,27 +3,6 @@
 
 @model BooksViewModel
 
-@*<h1>Welcome to the Bookstore!</h1>*@
-
-@*@foreach (Book b in Model.Books)
-    {*@
-@*<h3>@b.Title</h3>
-
-    <ul>
-        <li>Author: @b.Author</li>
-        <li>Category: @b.Category</li>
-        <li>Publisher: @b.Publisher</li>
-        <li>Price: $@b.Price</li>
-        <li>Page Count: @b.PageCount</li>
-        <li>Classification: @b.Classification</li>
-        <li>ISBN: @b.Isbn</li>
-    </ul>
-
-    <br />*@
-@*}*@
-
-@*<div page-model="@Model.PageInfo" page-action="Index"></div>*@
-
 
 @*Print out all the book info*@
 @foreach (Book b in Model.Books)
