@@ -52,11 +52,24 @@ namespace Bookstore
 
             app.UseEndpoints(endpoints =>
             {
+                //this endpoint handles a page number and a category if both are passed
+                endpoints.MapControllerRoute("categorypage",
+                    "{bookCategory}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index" }
+                    );
+
+                //this endpoint handles the page numbers. NOTE: the name, pattern, defaults are not neccessary to specify as done below
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "{pageNum}",
                     defaults: new { Controller = "Home", action = "Index" });
 
+                //this endpoint handles just the category passed, specify the default page number because it deosn't know what to do
+                endpoints.MapControllerRoute("category",
+                    "{bookCategory}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
+
+                //default route
                 endpoints.MapDefaultControllerRoute();
             });
         }
