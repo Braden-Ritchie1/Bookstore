@@ -62,7 +62,7 @@ namespace Bookstore
                 endpoints.MapControllerRoute(
                     name: "Paging",
                     pattern: "{pageNum}",
-                    defaults: new { Controller = "Home", action = "Index" });
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 //this endpoint handles just the category passed, specify the default page number because it deosn't know what to do
                 endpoints.MapControllerRoute("category",
