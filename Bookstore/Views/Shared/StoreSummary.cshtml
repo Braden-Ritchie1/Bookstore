@@ -22,4 +22,15 @@
     <div class="card-text p-1">Page Count: @Model.PageCount</div>
     <div class="card-text p-1">Classification: @Model.Classification</div>
     <div class="card-text p-1">ISBN: @Model.Isbn</div>
+
+
+    <form method="post" asp-page="/Shop">
+
+        <input type="hidden" asp-for="@Model.BookId"/>
+
+        <span class="card-text" style="float:right">
+            <button type="submit" class="btn btn-success btn-sm float-end">Buy</button>
+        </span>
+    </form>
 </div>
+

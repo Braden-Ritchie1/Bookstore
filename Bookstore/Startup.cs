@@ -35,6 +35,10 @@ namespace Bookstore
            });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +51,7 @@ namespace Bookstore
 
             //corresponds with the wwwroot
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -71,6 +75,9 @@ namespace Bookstore
 
                 //default route
                 endpoints.MapDefaultControllerRoute();
+
+                //needed when using razor pages
+                endpoints.MapRazorPages();
             });
         }
     }
