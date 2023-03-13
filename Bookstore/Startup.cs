@@ -34,7 +34,9 @@ namespace Bookstore
                options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
            });
 
+            //adding the repository method for both the Bookstore and the purchases
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
